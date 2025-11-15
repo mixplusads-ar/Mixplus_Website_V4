@@ -1,0 +1,616 @@
+/* 1) فونت‌ها */
+
+/* Kalameh */
+@font-face {
+  font-family: 'Kalameh';
+  src: url('/fonts/KALAMEH-THIN.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Kalameh';
+  src: url('/fonts/KALAMEH-REGULAR.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Kalameh';
+  src: url('/fonts/KALAMEH-BOLD.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Kalameh';
+  src: url('/fonts/KALAMEH-BLACK.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Kalameh Fanum */
+@font-face {
+  font-family: 'KalamehFanum';
+  src: url('/fonts/KALAMEHFANUM-THIN.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KalamehFanum';
+  src: url('/fonts/KALAMEHFANUM-REGULAR.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KalamehFanum';
+  src: url('/fonts/KALAMEHFANUM-BOLD.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KalamehFanum';
+  src: url('/fonts/KALAMEHFANUM-BLACK.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Montserrat */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-SemiBoldItalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2) توکن‌ها */
+
+:root {
+  --brand: #0fa99c;
+  --bg: #f9fafb;
+  --fg: #0b1120;
+  --card: #ffffff;
+  --stroke: rgba(148, 163, 184, 0.4);
+
+  --font-fa: 'Kalameh', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-fa-num: 'KalamehFanum', 'Kalameh', system-ui, sans-serif;
+  --font-en: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius-lg: 14px;
+  --radius-xl: 24px;
+  --header-height: 80px;
+}
+
+html.theme-dark,
+html[data-theme='dark'] {
+  --bg: #020617;
+  --fg: #e5e7eb;
+  --card: #020617;
+  --stroke: rgba(30, 64, 175, 0.55);
+}
+
+/* 3) ریست خیلی ملایم */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-en);
+  text-rendering: geometricPrecision;
+}
+
+/* زبان فارسی / انگلیسی */
+
+html.lang-fa body {
+  font-family: var(--font-fa);
+}
+
+html.lang-fa body {
+  font-feature-settings: 'ss01' 1, 'ss02' 1;
+}
+
+html.lang-fa {
+  direction: rtl;
+}
+
+html.lang-en {
+  direction: ltr;
+}
+
+/* لینک‌ها */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--brand);
+}
+
+/* کانتینر عمومی */
+
+.mix-container {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .mix-container {
+    padding-inline: 1.5rem;
+  }
+}
+
+/* هدر */
+
+.mix-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(14px);
+  transition: background-color 0.24s ease, border-color 0.24s ease,
+    box-shadow 0.24s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.mix-header--transparent {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+html[data-theme='light'] .mix-header--solid {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: var(--stroke);
+}
+
+html[data-theme='dark'] .mix-header--solid {
+  background-color: rgba(10, 12, 16, 0.92);
+  border-color: rgba(15, 23, 42, 0.9);
+}
+
+.mix-header__inner {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.mix-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.mix-header__nav-item {
+  position: relative;
+  padding-inline: 0.25rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mix-header__nav-item--primary {
+  font-weight: 500;
+}
+
+.mix-header__divider {
+  width: 1px;
+  height: 18px;
+  background-color: rgba(148, 163, 184, 0.35);
+}
+
+.mix-header__logo {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.mix-header__logo img {
+  height: 28px;
+  width: auto;
+}
+
+/* مگامنو */
+
+.mix-mega {
+  position: absolute;
+  top: 100%;
+  inset-inline-start: 0;
+  margin-top: 0.75rem;
+  min-width: 420px;
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--stroke);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
+  padding: 1rem;
+  display: none;
+}
+
+.mix-mega--open {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+  gap: 1rem;
+}
+
+.mix-mega__root-list {
+  border-inline-end: 1px solid var(--stroke);
+  padding-inline-end: 0.75rem;
+}
+
+.mix-mega__root-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-block: 0.35rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.mix-mega__root-item--active {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.mix-mega__root-indicator {
+  width: 3px;
+  height: 18px;
+  border-radius: 999px;
+  background-color: transparent;
+}
+
+.mix-mega__root-item--active .mix-mega__root-indicator {
+  background-color: var(--brand);
+}
+
+.mix-mega__sub-list {
+  padding-inline-start: 0.5rem;
+}
+
+.mix-mega__sub-item {
+  font-size: 0.85rem;
+  padding-block: 0.25rem;
+}
+
+/* هیرو */
+
+.mix-hero {
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+  color: #fff;
+  overflow: hidden;
+}
+
+.mix-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.mix-hero__video,
+.mix-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mix-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 0%, rgba(15, 169, 156, 0.45), transparent),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.98));
+  z-index: -1;
+}
+
+.mix-hero__content {
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 6rem;
+  display: flex;
+  align-items: center;
+}
+
+.mix-hero__title {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.mix-hero__subtitle {
+  max-width: 36rem;
+  font-size: 1rem;
+  opacity: 0.92;
+  line-height: 1.7;
+}
+
+/* فلش اسکرول */
+
+.mix-hero__scroll {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 1.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.mix-hero__scroll-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 250, 252, 0.5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  backdrop-filter: blur(10px);
+}
+
+.mix-hero__scroll-button svg {
+  animation: mix-bounce 1.6s ease-in-out infinite;
+}
+
+@keyframes mix-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(5px);
+    opacity: 1;
+  }
+}
+
+/* گرید دسته‌ها */
+
+.mix-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.mix-grid--categories {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1024px) {
+  .mix-grid--categories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .mix-grid--categories {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.mix-card {
+  background-color: var(--card);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.mix-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.25);
+  border-color: rgba(15, 169, 156, 0.8);
+}
+
+.mix-card__media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.mix-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mix-card__body {
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.mix-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* سکشن عنوان مشترک */
+
+.mix-section {
+  padding-block: 3.5rem;
+}
+
+.mix-section--tight {
+  padding-block: 2.5rem;
+}
+
+.mix-section__header {
+  margin-bottom: 1.5rem;
+}
+
+.mix-section__eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.7;
+}
+
+.mix-section__title {
+  font-size: clamp(1.6rem, 2.8vw, 2rem);
+  font-weight: 800;
+  margin-top: 0.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.mix-section__subtitle {
+  max-width: 30rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* بنر فول‌بلیید */
+
+.mix-fullbleed {
+  position: relative;
+  margin-block: 3rem;
+}
+
+.mix-fullbleed__image {
+  width: 100%;
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.mix-fullbleed__image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.mix-fullbleed__content {
+  position: absolute;
+  inset-inline: 6%;
+  bottom: 12%;
+  max-width: 420px;
+  color: #fff;
+}
+
+/* سوشال‌استریپ */
+
+.mix-socialstrip {
+  padding-block: 1.75rem;
+  border-block: 1px solid var(--stroke);
+}
+
+.mix-socialstrip__list {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.mix-socialstrip__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html[data-theme='light'] .mix-socialstrip__icon svg {
+  stroke: #020617;
+  fill: #020617;
+}
+
+html[data-theme='dark'] .mix-socialstrip__icon svg {
+  stroke: #f9fafb;
+  fill: #f9fafb;
+}
+
+/* فوتر */
+
+.mix-footer {
+  padding-block: 2.5rem;
+  border-top: 1px solid var(--stroke);
+  font-size: 0.85rem;
+}
+
+.mix-footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .mix-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
