@@ -1,0 +1,37 @@
+---
+import { categories } from '../data/categories';
+
+interface Props {
+  lang: 'fa' | 'en';
+}
+
+const { lang } = Astro.props;
+const isFa = lang === 'fa';
+---
+
+<section class="mix-section">
+  <div class="mix-container">
+    <div class="mix-grid mix-grid--categories">
+      {categories.map((cat, index) => {
+        const imgIndex = (index % 4) + 1;
+        const href = `/${lang}/products/${cat.slug}/`;
+        return (
+          <a class="mix-card" href={href}>
+            <div class="mix-card__media">
+              <img
+                src={`/media/grid-cards/card-0${imgIndex}.jpg`}
+                alt={isFa ? cat.nameFa : cat.nameEn}
+                loading="lazy"
+              />
+            </div>
+            <div class="mix-card__body">
+              <div class="mix-card__title">
+                {isFa ? cat.nameFa : cat.nameEn}
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>
