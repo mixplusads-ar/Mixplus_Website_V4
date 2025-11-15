@@ -1,0 +1,39 @@
+---
+import { social } from '../data/social';
+
+interface Props {
+  lang: 'fa' | 'en';
+}
+
+const { lang } = Astro.props;
+const isFa = lang === 'fa';
+---
+
+<footer class="mix-footer">
+  <div class="mix-container mix-footer__inner">
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <img
+        src="/logos/logo-dark.svg"
+        alt="MixPlus"
+        style="height:22px;width:auto;"
+      />
+      <span>
+        {isFa
+          ? '© تمامی حقوق برای میکس‌پلاس محفوظ است.'
+          : '© All rights reserved – MixPlus.'}
+      </span>
+    </div>
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      {social.slice(0, 3).map((s) => (
+        <a
+          href={s.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          style="font-size:.8rem;opacity:.8;"
+        >
+          {s.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</footer>
