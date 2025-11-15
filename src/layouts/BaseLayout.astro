@@ -1,0 +1,75 @@
+---
+import '../styles/globals.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  lang: 'fa' | 'en';
+  title?: string;
+  description?: string;
+  path?: string; // مثلاً '/fa/' یا '/en/about/'
+}
+
+const { lang, title, description, path } = Astro.props;
+
+const isFa = lang === 'fa';
+const dir = isFa ? 'rtl' : 'ltr';
+const htmlClass = `lang-${lang}`;
+const baseUrl = 'https://example.com'; // بعداً دامنه واقعی را بگذار
+const canonical = path ? `${baseUrl}${path}` : `${baseUrl}/${lang}/`;
+const altPath = path
+  ? path.replace(/^\/fa/, '/en').replace(/^\/en/, '/fa')
+  : lang === 'fa'
+  ? '/en/'
+  : '/fa/';
+const altLang = lang === 'fa' ? 'en' : 'fa';
+---
+
+<!doctype html>
+<html lang={lang} dir={dir} class={htmlClass} data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title ?? (lang === 'fa' ? 'میکس‌پلاس' : 'MixPlus')}</title>
+    {description && <meta name="description" content={description} />}
+
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" href={canonical} hreflang={lang} />
+    <link rel="alternate" href={`${baseUrl}${altPath}`} hreflang={altLang} />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content={title ?? (lang === 'fa' ? 'میکس‌پلاس' : 'MixPlus')}
+    />
+    {description && (
+      <meta property="og:description" content={description} />
+    )}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${baseUrl}/media/banners/fullbleed-01.jpg`} />
+
+    {/* اسکریپت تم: قبل از پِینت */}
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem('mix_theme');
+          const prefersDark = window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const next = stored === 'dark' || (!stored && prefersDark)
+            ? 'dark'
+            : 'light';
+          const html = document.documentElement;
+          html.dataset.theme = next;
+          html.classList.add(next === 'dark' ? 'theme-dark' : 'theme-light');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <Header lang={lang} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>
