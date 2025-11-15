@@ -1,0 +1,22 @@
+---
+import SectionTitle from './SectionTitle.astro';
+
+interface Props {
+  lang: 'fa' | 'en';
+  image: string;
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+}
+
+const { lang, image, eyebrow, title, subtitle } = Astro.props;
+---
+
+<section class="mix-fullbleed">
+  <div class="mix-fullbleed__image">
+    <img src={image} alt={title} loading="lazy" />
+  </div>
+  <div class="mix-fullbleed__content">
+    <SectionTitle lang={lang} eyebrow={eyebrow} title={title} subtitle={subtitle} />
+  </div>
+</section>
