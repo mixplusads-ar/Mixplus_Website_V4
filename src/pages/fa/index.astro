@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import CategoriesGrid from '../../components/CategoriesGrid.astro';
+import FullBleedBanner from '../../components/FullBleedBanner.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
+import SocialStrip from '../../components/SocialStrip.astro';
+import { landingCopy } from '../../data/site';
+
+const lang = 'fa';
+const copy = landingCopy[lang];
+---
+
+<BaseLayout
+  lang={lang}
+  title="میکس‌پلاس – تولیدکننده سینک، گاز، فر و هود"
+  description={copy.brandSubtitle}
+  path="/fa/"
+>
+  <Hero lang={lang} />
+
+  {/* سکشن معرفی برند */}
+  <section class="mix-section" id="brand-intro">
+    <div class="mix-container">
+      <SectionTitle lang={lang} title={copy.brandTitle} subtitle={copy.brandSubtitle} />
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem;">
+        <a
+          href="#products-grid"
+          style="
+            padding:.6rem 1.4rem;
+            border-radius:999px;
+            border:1px solid var(--brand);
+            background:var(--brand);
+            color:#fff;
+            font-size:.9rem;
+          "
+        >
+          {copy.ctaProducts}
+        </a>
+        <a
+          href="/fa/about/"
+          style="
+            padding:.6rem 1.4rem;
+            border-radius:999px;
+            border:1px solid var(--stroke);
+            font-size:.9rem;
+          "
+        >
+          {copy.ctaAbout}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* گرید دسته‌ها */}
+  <div id="products-grid">
+    <CategoriesGrid lang={lang} />
+  </div>
+
+  {/* بنر #1 */}
+  <FullBleedBanner
+    lang={lang}
+    image="/media/banners/fullbleed-01.jpg"
+    eyebrow="کیفیت و طراحی"
+    title="ترکیب تکنولوژی روز و طراحی ایتالیایی"
+    subtitle="میکس‌پلاس محصولاتی را توسعه می‌دهد که هم از نظر عملکرد و هم از نظر ظاهر، استاندارد آشپزخانه شما را ارتقا می‌دهند."
+  />
+
+  {/* ویدیو کارخانه */}
+  <VideoEmbed lang={lang} aparatId="APARAT_HASH_HERE" />
+
+  {/* بنر #2 */}
+  <FullBleedBanner
+    lang={lang}
+    image="/media/banners/fullbleed-02.jpg"
+    eyebrow="جزئیات مهم"
+    title="هر محصول، حاصل ده‌ها تصمیم ریز مهندسی شده"
+    subtitle="از انتخاب مواد اولیه تا فرآیند تولید، همه‌چیز برای طول عمر بیشتر و تجربه کاربری بهتر طراحی شده است."
+  />
+
+  {/* بنر #3 */}
+  <FullBleedBanner
+    lang={lang}
+    image="/media/banners/fullbleed-03.jpg"
+    eyebrow="خدمات پس از فروش"
+    title="پشتیبانی شفاف، مستند و قابل پیگیری"
+    subtitle="فرآیندهای رسمی برای نصب، گارانتی و رسیدگی به شکایات، خیالتان را پس از خرید هم راحت می‌کند."
+  />
+
+  {/* ۴ کارت میانبر (محصولات، رویدادها، خدمات، آموزش) */}
+  <section class="mix-section">
+    <div class="mix-container">
+      <div class="mix-grid mix-grid--categories">
+        <a class="mix-card" href="/fa/products/">
+          <div class="mix-card__media">
+            <img src="/media/grid-cards/card-05.jpg" alt="محصولات" loading="lazy" />
+          </div>
+          <div class="mix-card__body">
+            <div class="mix-card__title">محصولات</div>
+          </div>
+        </a>
+        <a class="mix-card" href="/fa/events/">
+          <div class="mix-card__media">
+            <img src="/media/grid-cards/card-06.jpg" alt="رویدادها" loading="lazy" />
+          </div>
+          <div class="mix-card__body">
+            <div class="mix-card__title">رویدادها</div>
+          </div>
+        </a>
+        <a class="mix-card" href="/fa/after-sales/">
+          <div class="mix-card__media">
+            <img src="/media/grid-cards/card-07.jpg" alt="خدمات" loading="lazy" />
+          </div>
+          <div class="mix-card__body">
+            <div class="mix-card__title">خدمات</div>
+          </div>
+        </a>
+        <a class="mix-card" href="/fa/training/">
+          <div class="mix-card__media">
+            <img src="/media/grid-cards/card-08.jpg" alt="آموزش" loading="lazy" />
+          </div>
+          <div class="mix-card__body">
+            <div class="mix-card__title">آموزش</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* SocialStrip بین بنر ۳ و ۴ */}
+  <SocialStrip lang={lang} />
+
+  {/* بنر #4 */}
+  <FullBleedBanner
+    lang={lang}
+    image="/media/banners/fullbleed-04.jpg"
+    eyebrow="الهام از ایتالیا"
+    title="آشپزخانه‌ای که هر روز مثل روز اول خوشایند است"
+    subtitle="ترکیبی از خطوط مینیمال، تناسبات دقیق و رنگ‌هایی که با معماری خانه‌های ایرانی هماهنگ است."
+  />
+</BaseLayout>
