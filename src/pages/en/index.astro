@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import CategoriesGrid from '../../components/CategoriesGrid.astro';
+import FullBleedBanner from '../../components/FullBleedBanner.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
+import SocialStrip from '../../components/SocialStrip.astro';
+import { landingCopy } from '../../data/site';
+
+const lang = 'en';
+const copy = landingCopy[lang];
+---
+
+<BaseLayout
+  lang={lang}
+  title="MixPlus – Built-in hobs, sinks, ovens and hoods"
+  description={copy.brandSubtitle}
+  path="/en/"
+>
+  <Hero lang={lang} />
+
+  <section class="mix-section" id="brand-intro">
+    <div class="mix-container">
+      <SectionTitle lang={lang} title={copy.brandTitle} subtitle={copy.brandSubtitle} />
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem;">
+        <a
+          href="#products-grid"
+          style="
+            padding:.6rem 1.4rem;
+            border-radius:999px;
+            border:1px solid var(--brand);
+            background:var(--brand);
+            color:#fff;
+            font-size:.9rem;
+          "
+        >
+          {copy.ctaProducts}
+        </a>
+        <a
+          href="/en/about/"
+          style="
+            padding:.6rem 1.4rem;
+            border-radius:999px;
+            border:1px solid var(--stroke);
+            font-size:.9rem;
+          "
+        >
+          {copy.ctaAbout}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div id="products-grid">
+    <CategoriesGrid lang={lang} />
+  </div>
+
+  <FullBleedBanner
+    lang={lang}
+    image="/media/banners/fullbleed-01.jpg"
+    eyebrow="Design & quality"
+    title="Engineering meets Italian-inspired design"
+    subtitle="MixPlus products are engineered to elevate both the performance and visuals of your kitchen."
+  />
+
+  <VideoEmbed lang={lang} youtubeId="YOUTUBE_ID_HERE" />
+
+  <FullBleedBanner
+    lang={lang}
+    image="/media/banners/fullbleed-02.jpg"
+    eyebrow="Details that matter"
+    title="Every product is the result of many small decisions"
+    subtitle="Materials, construction and layout are carefully tuned for everyday use."
+  />
+
+  <FullBleedBanner
+    lang={lang}
+    image="/media/banners/fullbleed-03.jpg"
+    eyebrow="After-sales"
+    title="Transparent, documented support processes"
+    subtitle="From installation to complaints, everything follows clear procedures."
+  />
+
+  <section class="mix-section">
+    <div class="mix-container">
+      <div class="mix-grid mix-grid--categories">
+        <a class="mix-card" href="/en/products/">
+          <div class="mix-card__media">
+            <img src="/media/grid-cards/card-05.jpg" alt="Products" loading="lazy" />
+          </div>
+          <div class="mix-card__body">
+            <div class="mix-card__title">Products</div>
+          </div>
+        </a>
+        <a class="mix-card" href="/en/events/">
+          <div class="mix-card__media">
+            <img src="/media/grid-cards/card-06.jpg" alt="Events" loading="lazy" />
+          </div>
+          <div class="mix-card__body">
+            <div class="mix-card__title">Events</div>
+          </div>
+        </a>
+        <a class="mix-card" href="/en/after-sales/">
+          <div class="mix-card__media">
+            <img src="/media/grid-cards/card-07.jpg" alt="Services" loading="lazy" />
+          </div>
+          <div class="mix-card__body">
+            <div class="mix-card__title">Services</div>
+          </div>
+        </a>
+        <a class="mix-card" href="/en/training/">
+          <div class="mix-card__media">
+            <img src="/media/grid-cards/card-08.jpg" alt="Training" loading="lazy" />
+          </div>
+          <div class="mix-card__body">
+            <div class="mix-card__title">Training</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <SocialStrip lang={lang} />
+
+  <FullBleedBanner
+    lang={lang}
+    image="/media/banners/fullbleed-04.jpg"
+    eyebrow="Italian inspiration"
+    title="A kitchen that feels right every day"
+    subtitle="Minimal lines, coherent proportions and colours that work with contemporary interiors."
+  />
+</BaseLayout>
