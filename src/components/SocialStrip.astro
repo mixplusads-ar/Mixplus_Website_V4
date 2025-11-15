@@ -1,0 +1,27 @@
+---
+import { social } from '../data/social';
+
+interface Props {
+  lang: 'fa' | 'en';
+}
+
+---
+
+<section class="mix-socialstrip">
+  <div class="mix-container">
+    <div class="mix-socialstrip__list">
+      {social.map((s) => (
+        <a
+          class="mix-socialstrip__icon"
+          href={s.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={s.label}
+        >
+          {/* فعلاً از SVG واقعی عبور؛ اینجا می‌توانی بعداً آیکون‌ها را جایگزین کنی */}
+          <span>{s.label[0]}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
