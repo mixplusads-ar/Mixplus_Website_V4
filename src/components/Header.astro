@@ -1,0 +1,426 @@
+---
+import { categories } from '../data/categories';
+import { social } from '../data/social';
+
+interface Props {
+  lang: 'fa' | 'en';
+}
+
+const { lang } = Astro.props;
+const isFa = lang === 'fa';
+
+const logoLight = '/logos/logo.svg';
+const logoDark = '/logos/logo-dark.svg';
+---
+
+<header
+  class="mix-header mix-header--transparent"
+  data-header-root
+  data-lang={lang}
+>
+  <div class="mix-container mix-header__inner">
+    {/* ناوبری راست/چپ بر اساس زبان */}
+    {isFa ? (
+      <>
+        {/* سمت راست لوگو در فارسی */}
+        <nav class="mix-header__nav" aria-label="Main right">
+          <button
+            class="mix-header__nav-item mix-header__nav-item--primary"
+            data-mega-trigger="products"
+            type="button"
+          >
+            محصولات
+          </button>
+          <span class="mix-header__divider" />
+          <a class="mix-header__nav-item" href="/fa/dealers/">نمایندگی‌های مجاز</a>
+          <span class="mix-header__divider" />
+          <button
+            class="mix-header__nav-item mix-header__nav-item--primary"
+            data-mega-trigger="after-sales"
+            type="button"
+          >
+            خدمات پس از فروش
+          </button>
+        </nav>
+
+        {/* لوگو وسط */}
+        <div class="mix-header__logo">
+          <a href="/fa/">
+            <img
+              src={logoDark}
+              alt="MixPlus"
+              loading="lazy"
+              data-logo-light
+            />
+            <img
+              src={logoLight}
+              alt="MixPlus"
+              loading="lazy"
+              hidden
+              data-logo-dark
+            />
+          </a>
+        </div>
+
+        {/* سمت چپ لوگو در فارسی */}
+        <nav class="mix-header__nav" aria-label="Main left">
+          <button
+            class="mix-header__nav-item"
+            type="button"
+            aria-label="جستجو"
+          >
+            🔍
+          </button>
+          <span class="mix-header__divider" />
+          <div class="mix-header__nav-item" data-mega-trigger="social">
+            #
+          </div>
+          <span class="mix-header__divider" />
+          <a class="mix-header__nav-item" href="/fa/about/">درباره ما</a>
+          <span class="mix-header__divider" />
+          <a class="mix-header__nav-item" href="/docs/catalog-fa.pdf" target="_blank" rel="noopener noreferrer">
+            دانلود کاتالوگ
+          </a>
+          <span class="mix-header__divider" />
+          <div class="mix-header__nav-item">
+            <details>
+              <summary>فارسی ▾</summary>
+              <div>
+                <a href="/en/">English</a>
+              </div>
+            </details>
+          </div>
+          <span class="mix-header__divider" />
+          <button
+            class="mix-header__nav-item"
+            type="button"
+            aria-label="تغییر تم"
+            data-theme-toggle
+          >
+            🌗
+          </button>
+        </nav>
+      </>
+    ) : (
+      <>
+        {/* سمت چپ لوگو در انگلیسی */}
+        <nav class="mix-header__nav" aria-label="Main left">
+          <button
+            class="mix-header__nav-item mix-header__nav-item--primary"
+            data-mega-trigger="products"
+            type="button"
+          >
+            Products
+          </button>
+          <span class="mix-header__divider" />
+          <a class="mix-header__nav-item" href="/en/dealers/">
+            Dealers
+          </a>
+          <span class="mix-header__divider" />
+          <button
+            class="mix-header__nav-item mix-header__nav-item--primary"
+            data-mega-trigger="after-sales"
+            type="button"
+          >
+            After-Sales
+          </button>
+          <span class="mix-header__divider" />
+          <a class="mix-header__nav-item" href="/en/about/">
+            About Us
+          </a>
+        </nav>
+
+        {/* لوگو وسط */}
+        <div class="mix-header__logo">
+          <a href="/en/">
+            <img
+              src={logoDark}
+              alt="MixPlus"
+              loading="lazy"
+              data-logo-light
+            />
+            <img
+              src={logoLight}
+              alt="MixPlus"
+              loading="lazy"
+              hidden
+              data-logo-dark
+            />
+          </a>
+        </div>
+
+        {/* سمت راست لوگو در انگلیسی */}
+        <nav class="mix-header__nav" aria-label="Main right">
+          <button
+            class="mix-header__nav-item"
+            type="button"
+            aria-label="Search"
+          >
+            🔍
+          </button>
+          <span class="mix-header__divider" />
+          <div class="mix-header__nav-item" data-mega-trigger="social">
+            #
+          </div>
+          <span class="mix-header__divider" />
+          <a
+            class="mix-header__nav-item"
+            href="/docs/catalog-en.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download Catalog
+          </a>
+          <span class="mix-header__divider" />
+          <div class="mix-header__nav-item">
+            <details>
+              <summary>English ▾</summary>
+              <div>
+                <a href="/fa/">فارسی</a>
+              </div>
+            </details>
+          </div>
+          <span class="mix-header__divider" />
+          <button
+            class="mix-header__nav-item"
+            type="button"
+            aria-label="Toggle theme"
+            data-theme-toggle
+          >
+            🌗
+          </button>
+        </nav>
+      </>
+    )}
+  </div>
+
+  {/* مگامنو محصولات */}
+  <div class="mix-container" aria-hidden="true">
+    <div class="mix-header__mega-wrapper" data-mega-panel="products">
+      <div class="mix-mega" data-mega-panel-inner="products">
+        <div class="mix-mega__root-list" data-mega-root-list>
+          {categories.map((cat, index) => (
+            <button
+              class="mix-mega__root-item"
+              type="button"
+              data-cat-slug={cat.slug}
+              data-active={index === 0 ? 'true' : 'false'}
+            >
+              <span class="mix-mega__root-indicator" />
+              <span>{isFa ? cat.nameFa : cat.nameEn}</span>
+            </button>
+          ))}
+        </div>
+        <div class="mix-mega__sub-list" data-mega-sub-list>
+          {/* با جاوااسکریپت پر می‌شود */}
+        </div>
+      </div>
+    </div>
+
+    {/* مگامنو خدمات پس از فروش */}
+    <div class="mix-header__mega-wrapper" data-mega-panel="after-sales">
+      <div class="mix-mega" data-mega-panel-inner="after-sales">
+        <div>
+          {isFa ? (
+            <>
+              <a
+                class="mix-mega__sub-item"
+                href="/fa/after-sales/complaint-process/"
+              >
+                فرآیند رسیدگی به شکایات
+              </a>
+              <a
+                class="mix-mega__sub-item"
+                href="/fa/after-sales/warranty-terms/"
+              >
+                شرایط گارانتی محصولات میکس‌پلاس
+              </a>
+              <a
+                class="mix-mega__sub-item"
+                href="/fa/after-sales/installation-request/"
+              >
+                درخواست نصب محصول
+              </a>
+              <a
+                class="mix-mega__sub-item"
+                href="/fa/after-sales/complaint/"
+              >
+                شکایت
+              </a>
+            </>
+          ) : (
+            <>
+              <a
+                class="mix-mega__sub-item"
+                href="/en/after-sales/complaint-process/"
+              >
+                Complaint process
+              </a>
+              <a
+                class="mix-mega__sub-item"
+                href="/en/after-sales/warranty-terms/"
+              >
+                Warranty terms
+              </a>
+              <a
+                class="mix-mega__sub-item"
+                href="/en/after-sales/installation-request/"
+              >
+                Installation request
+              </a>
+              <a
+                class="mix-mega__sub-item"
+                href="/en/after-sales/complaint/"
+              >
+                Complaint
+              </a>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+
+    {/* مگامنو شبکه‌های اجتماعی */}
+    <div class="mix-header__mega-wrapper" data-mega-panel="social">
+      <div class="mix-mega" data-mega-panel-inner="social">
+        <ul style="list-style:none; padding:0; margin:0;">
+          {social.map((s) => (
+            <li class="mix-mega__sub-item">
+              <a href={s.href} target="_blank" rel="noopener noreferrer">
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // تغییر حالت اسکرول هدر
+    (function () {
+      const header = document.querySelector('[data-header-root]');
+      if (!header) return;
+      const onScroll = () => {
+        const y = window.scrollY || window.pageYOffset;
+        if (y > 10) {
+          header.classList.remove('mix-header--transparent');
+          header.classList.add('mix-header--solid');
+        } else {
+          header.classList.add('mix-header--transparent');
+          header.classList.remove('mix-header--solid');
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // تم: toggle
+    (function () {
+      const btn = document.querySelector('[data-theme-toggle]');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const html = document.documentElement;
+        const current = html.dataset.theme === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.dataset.theme = next;
+        html.classList.remove(
+          current === 'dark' ? 'theme-dark' : 'theme-light'
+        );
+        html.classList.add(next === 'dark' ? 'theme-dark' : 'theme-light');
+        try {
+          localStorage.setItem('mix_theme', next);
+        } catch (e) {}
+        const logoLight = document.querySelector('[data-logo-light]');
+        const logoDark = document.querySelector('[data-logo-dark]');
+        if (logoLight && logoDark) {
+          if (next === 'dark') {
+            logoLight.setAttribute('hidden', 'true');
+            logoDark.removeAttribute('hidden');
+          } else {
+            logoDark.setAttribute('hidden', 'true');
+            logoLight.removeAttribute('hidden');
+          }
+        }
+      });
+    })();
+
+    // حالت اولیه لوگو بر اساس تم
+    (function () {
+      const html = document.documentElement;
+      const logoLight = document.querySelector('[data-logo-light]');
+      const logoDark = document.querySelector('[data-logo-dark]');
+      if (!logoLight || !logoDark) return;
+      if (html.dataset.theme === 'dark') {
+        logoLight.setAttribute('hidden', 'true');
+        logoDark.removeAttribute('hidden');
+      } else {
+        logoDark.setAttribute('hidden', 'true');
+        logoLight.removeAttribute('hidden');
+      }
+    })();
+
+    // Hover-intent بسیار ساده برای مگامنو
+    (function () {
+      const INTENT_DELAY = 220;
+      const triggers = document.querySelectorAll('[data-mega-trigger]');
+      const panels = document.querySelectorAll('[data-mega-panel-inner]');
+      let openId = null;
+      let timer = null;
+
+      function setOpen(id) {
+        panels.forEach((p) => {
+          const pid = p.getAttribute('data-mega-panel-inner');
+          if (pid === id) {
+            p.classList.add('mix-mega--open');
+          } else {
+            p.classList.remove('mix-mega--open');
+          }
+        });
+        openId = id;
+      }
+
+      function closeAll() {
+        panels.forEach((p) => p.classList.remove('mix-mega--open'));
+        openId = null;
+      }
+
+      triggers.forEach((t) => {
+        const id = t.getAttribute('data-mega-trigger');
+        if (!id) return;
+        t.addEventListener('mouseenter', () => {
+          clearTimeout(timer);
+          timer = setTimeout(() => setOpen(id), INTENT_DELAY);
+        });
+        t.addEventListener('mouseleave', () => {
+          clearTimeout(timer);
+          timer = setTimeout(closeAll, INTENT_DELAY + 80);
+        });
+        t.addEventListener('click', () => {
+          if (openId === id) closeAll();
+          else setOpen(id);
+        });
+      });
+
+      panels.forEach((panel) => {
+        panel.addEventListener('mouseenter', () => {
+          clearTimeout(timer);
+        });
+        panel.addEventListener('mouseleave', () => {
+          clearTimeout(timer);
+          timer = setTimeout(closeAll, INTENT_DELAY + 80);
+        });
+      });
+
+      // رندر زیردسته‌ها برای مگامنو محصولات
+      const rootList = document.querySelector('[data-mega-root-list]');
+      const subList = document.querySelector('[data-mega-sub-list]');
+      if (!rootList || !subList) return;
+
+      const categories = JSON.parse(
+        document.querySelector('[data-header-root]')?.dataset.categories ??
+          '[]'
+      );
+    })();
+  </script>
+</header>
